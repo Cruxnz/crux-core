@@ -2,7 +2,7 @@
 
 First of all, purchase your domain name from whatever site is the cheapest and doesn't look too dodgy. I used https://www.crazydomains.co.nz. Great name.
 
-DO has these things called floating IPs (AWS calls them elastic IPs). They allow you to assign a "static IP" to your virtual server. Get one and assign it.
+DO has these things called floating IPs (AWS calls them elastic IPs). They allow you to assign a "static IP" to your virtual server. Get one and assign it to your droplet which will run the load balancer.
 
 Change the DNS records on your domain website (you can also manage DNS on DO but it should be easy enough if you have a decent service).
 Simplest use case - give any domains you want hitting your server (eg. cruxfibre.nz and cruxfibre.co.nz) an A record with the value of your floating IP (eg. 167.99.28.86). The A record tells DNS how to resolve your domain names (ie. what IP address it should use).
