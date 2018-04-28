@@ -37,7 +37,7 @@ sudo apt-get install certbot
 
 Follow the steps, I recommend using the standalone server. Make sure your A records are set up correctly on your DNS service.
 
-I can run `dig cruxfibre.nz` to check. Replace with your domain name and make sure the IP address matches up to your server IP. Remember that it can take some time, the TTL could be 300s or something. Also just make sure you're not an idiot and the challenge should work.
+I can run `dig cruxfibre.nz` to check. Replace with your domain name and make sure the IP address matches up to your server IP. Remember that it can take some time, the TTL could be 300s or something. Also just make sure you haven't missed something silly and the challenge should work.
 
 I get a cert for the following domains (one cert works for all) - cruxfibre.nz www.cruxfibre.nz cruxfibre.co.nz www.cruxfibre.co.nz
 
