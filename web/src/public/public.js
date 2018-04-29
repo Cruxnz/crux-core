@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, browserHistory } from 'react-router'
-import splashRoutes from './splashRoutes'
+import routes from './routes'
 
 const reactRoot = document.getElementById('app')
 
 ReactDOM.render(
-  <Router routes={splashRoutes} history={browserHistory} />,
+  <Router routes={routes} history={browserHistory} />,
   reactRoot
 )
