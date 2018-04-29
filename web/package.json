@@ -1,0 +1,26 @@
+{
+  "name": "crux-web",
+  "version": "1.0.0",
+  "description": "Frontend for Crux, an open source ISP.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --progress --profile --colors",
+    "build:watch": "webpack --progress --profile --colors --watch",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cruxnz/crux-core.git"
+  },
+  "author": "danielkermode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cruxnz/crux-core/issues"
+  },
+  "homepage": "https://github.com/Cruxnz/crux-core#readme",
+  "devDependencies": {
+    "standard": "^11.0.1",
+    "webpack": "^4.6.0"
+  }
+}
