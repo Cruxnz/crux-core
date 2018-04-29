@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Cruxnz/crux-core#readme",
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "standard": "^11.0.1",
     "webpack": "^4.6.0"
   }
