@@ -1,38 +1,32 @@
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanObsoleteChunks = require('webpack-clean-obsolete-chunks')
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
-// HTML file for splash page. NB: Maps to index.html
+// HTML file for public part of site. NB: Maps to index.html
 
-const htmlSplashPlugin = new HtmlWebpackPlugin({
-  template: 'splash.ejs',
-  filename: '../index.html',
+const htmlpublicPlugin = new HtmlWebpackPlugin({
+  template: 'src/public/public.ejs',
+  filename: 'index.html',
   inject: false
 })
 
 // HTML file generation from template for app, both dev and prod
 const htmlAppPlugin = new HtmlWebpackPlugin({
-  template: 'app.ejs',
-  filename: '../app.html',
+  template: 'src/app/app.ejs',
+  filename: 'app.html',
   inject: false
-})
-
-// Common dependencies
-const commonsPlugin = new webpack.optimize.CommonsChunkPlugin({
-  name: 'commons',
-  filename: 'commons.[hash].js'
 })
 
 module.exports = {
   entry: {
-    app: './src/app.js',
-    splash: './src/splash.js'
+    app: './src/app/app.js',
+    public: './src/public/public.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name]-bundle.[hash].js',
+    filename: 'assets/[name]-bundle.[hash].js',
     publicPath: '/assets/'
   },
   resolve: {
@@ -43,7 +37,9 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader'
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.less$/,
@@ -84,26 +80,12 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: './public'
+    contentBase: './dist'
   },
-  plugins: (process.env.MINIFY_BUNDLE === 'yes')
-    ? [
-      htmlSplashPlugin,
-      htmlAppPlugin,
-      commonsPlugin,
-      new webpack.DefinePlugin({
-        'process.env': {
-          'NODE_ENV': JSON.stringify('production')
-        }
-      }),
-      new webpack.optimize.UglifyJsPlugin(),
-      new webpack.optimize.ModuleConcatenationPlugin(),
-      new WebpackCleanupPlugin()
-    ]
-    : [
-      htmlSplashPlugin,
-      htmlAppPlugin,
-      commonsPlugin,
-      new CleanObsoleteChunks()
-    ]
+  plugins: [
+    htmlpublicPlugin,
+    htmlAppPlugin,
+    new CleanObsoleteChunks(),
+    new WebpackCleanupPlugin()
+  ]
 }
