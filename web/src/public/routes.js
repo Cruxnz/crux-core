@@ -1,11 +1,15 @@
 import React from 'react'
-import { Route } from 'react-router'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // pages
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
-export default (
-  <Route>
-    <Route path='/' component={Home} />
-    <Route path='/*' component={NotFound} />
-  </Route>
+export default () => (
+  <Router>
+    <div>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route component={NotFound} />
+      </Switch>
+    </div>
+  </Router>
 )

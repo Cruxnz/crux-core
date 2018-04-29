@@ -27,7 +27,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/[name]-bundle.[hash].js',
-    publicPath: '/assets/'
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js']
